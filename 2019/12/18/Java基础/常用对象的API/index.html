@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Kyle Sun">
+
+
+
+    <meta name="description" content="O ever youthful,O ever weeping">
+
+
+
+<title>常用对象的API | KyleSun</title>
+
+
+
+    <link rel="icon" href="/ico/Saber (2).ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Kyle Sun</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Kyle Sun</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">常用对象的API</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Kyle Sun</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十二月 18, 2019&nbsp;&nbsp;21:27:37</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java基础/">Java基础</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<h3 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h3><ul>
+<li><p>概念<br>  程序中所有的双引号字符串,都是String类的对象</p>
+</li>
+<li><p>特点</p>
+<ul>
+<li>字符串的内容不可以被改变</li>
+<li>字符串可以被共享使用</li>
+<li>字符串效果上相当于char[]字符数组,底层原理是byte[]字节数组</li>
+</ul>
+</li>
+<li><p>创建字符串</p>
+<ul>
+<li>通过空参构造<br>  String string = new String()</li>
+<li>通过字符串构造<br>  String string =new String(String original)</li>
+<li>通过字符数组构造<br>  String string = new String(char[] chars)</li>
+<li>通过字节数组构造<br>  String string = new String(byte[] bytes)</li>
+<li>通过双引号直接创建<br>  String string = “hello”<ul>
+<li>注意事项<ol>
+<li>前三种通过new的创建方式,string变量指向的是堆中的地址</li>
+<li>通过双引号直接创建,string变量指向的是常量池中的地址</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>==号</p>
+<ul>
+<li><p>比较基本类型    比较的是变量中具体的值</p>
+</li>
+<li><p>比较引用类型    比较的是变量中的地址值</p>
+</li>
+</ul>
+</li>
+<li><p><strong>常用方法</strong></p>
+<ol>
+<li>比较<ul>
+<li>boolean equals(Object obj)<br>比较两个字符串是否相等</li>
+<li>boolean equalsIgnoreCase(String string)<br>比较两个字符串是否相等,忽略大小写</li>
+</ul>
+</li>
+<li>获取<ul>
+<li>int length()<br>获取长度</li>
+<li>char charAt(int index)<br>获取指定索引位置的字符</li>
+<li>int indexOf(String string)<br>获取传入的字符串在当前字符串中第一次出现的位置,未出现返回-1</li>
+</ul>
+</li>
+<li>了解<ul>
+<li>截取<ul>
+<li>String subString(int index)<br>  从指定位置开始截取,一直截取到最后</li>
+<li>String subString(int begin,int end)<br>  从指定位置开始截取,截取到指定位置,含头不含尾</li>
+</ul>
+</li>
+<li>转换<ul>
+<li>String replace(CharSequence oldString,CharSequence newString)<br>  将当前字符串中的指定内容替换为新的内容,将新字符串返回</li>
+<li>String toLowerCase()<br>  将字符串转为小写</li>
+<li>String toUpperCase()<br>  将字符串转为大写</li>
+<li>String trim()<br>  去掉字符串两端的空格</li>
+</ul>
+</li>
+<li>判断<ul>
+<li>boolean contains(CharSequence s)<br>  判断字符串是否包含指定的字符串</li>
+<li>boolean startsWith(String prefix)<br>  判断字符串是否以指定的字符串开头</li>
+<li>boolean endsWith(String suffix)<br>  判断字符串是否以指定的字符串结尾</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h3><ul>
+<li><p>介绍<br>  一个可变的字符序列</p>
+</li>
+<li><p>构造方法</p>
+<ul>
+<li>new StringBuilder()<br>创建空的StringBuilder对象</li>
+<li>new StringBuilder(String string)<br>创建带有指定数据的StingBuilder对象</li>
+</ul>
+</li>
+<li><p>成员方法</p>
+<ul>
+<li>StringBuilder append(…)<br>将任意类型的数据追加到StringBuilder对象中</li>
+<li>StringBuilder reverse()<br>将StringBuilder对象中的数据反转</li>
+<li>String toString()<br>将StringBuilder对象中的数据转换为String返回</li>
+</ul>
+</li>
+<li><p><strong>使用场景</strong></p>
+<ul>
+<li>1.大量的字符串拼接</li>
+<li>2.字符串反转</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a>Arrays类</h3><ul>
+<li>介绍<br>  操作数组相关的工具类,里面有静态方法,可以通过类名进行调用</li>
+<li>方法<ul>
+<li>String toString(数据类型[] 变量名)<br>将数组中的内容以字符串的形式返回</li>
+<li>void sort(数据类型[] 变量名)<br>将数组中的内容进行排序</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="ArrayList集合"><a href="#ArrayList集合" class="headerlink" title="ArrayList集合"></a>ArrayList集合</h3><ul>
+<li><p>介绍<br>  是一个长度可变的容器</p>
+</li>
+<li><p>数组和集合的区别</p>
+<ol>
+<li>数组的长度是不可变的,集合的长度是可变的</li>
+<li>数组既可以存储基本类型也可以存储引用类型,集合只能存储引用类型</li>
+</ol>
+</li>
+<li><p>泛型<br>  约束集合存储的数据类型, &lt;&gt; 中只能是引用数据类型</p>
+</li>
+<li><p>使用步骤</p>
+<ol>
+<li>导包<br> import java.util.ArrayList</li>
+<li>创建对象<br> ArrayList&lt;引用数据类型&gt; arrayList = new ArrayList&lt;&gt;();</li>
+<li>使用<br> arrayList.成员方法();</li>
+</ol>
+</li>
+<li><p>常用方法</p>
+<ul>
+<li>添加<ul>
+<li>boolean add(E e)<br>  将指定元素添加到集合的末尾</li>
+<li>void add(int index, E element)<br>  将指定元素添加到集合的指定位置</li>
+</ul>
+</li>
+<li>删除<ul>
+<li>E remove(int index)<br>  移除指定位置的元素,返回值是被移除的元素</li>
+<li>boolean remove(Object o)<br>  移除指定的元素,返回值是移除是否成功</li>
+</ul>
+</li>
+<li>修改<ul>
+<li>E set(int index, E element)<br>  修改指定位置的元素,返回值是修改前的元素</li>
+</ul>
+</li>
+<li>获取<ul>
+<li>E get(int index)<br>  获取指定位置的元素</li>
+</ul>
+</li>
+<li>长度<ul>
+<li>int size()<br>  获取集合的长度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>包装类</p>
+<ul>
+<li><p>基本类型对应包装类</p>
+<pre><code>int    Integer
+char    Character
+byte    Byte
+short    Short
+long    Long
+float    Float
+double    Double
+boolean    Boolean</code></pre></li>
+<li><p>装箱和拆箱</p>
+<ul>
+<li>装箱<br>  将基本类型数据变成包装类</li>
+<li>拆箱<br>  将包装类型数据变成基本类型</li>
+<li>注意<br>  JDK1.5之后,可以根据场景需求自动进行装箱和拆箱</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><ul>
+<li><p>介绍<br>  操作数学相关的工具类,里面有静态方法,可以通过类名进行调用</p>
+</li>
+<li><p>方法</p>
+<ul>
+<li>double abs(double num)        获取绝对值</li>
+<li>double ceil(double num)        向上取整</li>
+<li>double floor(double num)        向下取整</li>
+<li>long round(double num)        四舍五入</li>
+<li>double random()        获取一个0~1的随机数,左闭右开</li>
+<li>int max(int a, int b)        获取两个数中的较大值</li>
+<li>int min(int a, int b)        获取两个数中的较小值</li>
+<li>double pow(double a, double b)        获取a的b次幂</li>
+</ul>
+</li>
+<li><p>成员变量</p>
+<ul>
+<li>PI        圆周率近似值</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h3><ul>
+<li>常用方法<ul>
+<li>long currentTimeMillis()        获取当前系统时间毫秒值<pre><code>时间原点:    1970年1月1日 00:00:00</code></pre></li>
+<li>void exit(int status)        终止当前正在运行的虚拟机<pre><code>0:表示正常终止</code></pre></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><ul>
+<li><p>特点</p>
+<ol>
+<li>所有类的父类(跟类,基类)</li>
+<li>任意类都直接或间接继承Object类</li>
+<li>任意类都可以直接使用Object类中的方法</li>
+</ol>
+</li>
+<li><p>toString 方法</p>
+<ul>
+<li>重写前<br>调用的是Object类的 toString 方法,返回的是全路径类名 + @ + 十六进制地址值</li>
+<li>重写后<br>调用的是自身的 toString 方法,返回的属性名+属性值</li>
+</ul>
+</li>
+<li><p>equals方法</p>
+<ul>
+<li>==号<br>比较基本类型时,比较的是具体指<br>比较引用类型时,比较的是地址值</li>
+<li>重写前<br>调用的是Object类的equals方法,比较的是地址值</li>
+<li>重写后<br>调用的是自身的equals方法,比较的是属性值</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h3><ul>
+<li>毫秒值<br>  1秒 = 1000毫秒<br>  时间原点:    1970年1月1日 00:00:00</li>
+<li>构造方法<ul>
+<li>new Date():<br>创建当前系统时间的时间对象</li>
+<li>new Date(long times):<br>创建指定毫秒值的时间对象(在时间原点基础上加上指定的时间)</li>
+</ul>
+</li>
+<li>成员方法<ul>
+<li>long getTime()<br>获取当前时间对象对应的毫秒值</li>
+<li>void setTime(long time)<br>将指定毫秒值设置给当前时间对象</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="SimpleDateFormat类"><a href="#SimpleDateFormat类" class="headerlink" title="SimpleDateFormat类"></a>SimpleDateFormat类</h3><ul>
+<li><p>构造方法</p>
+<ul>
+<li><p>new SimpleDateFormat()<br>创建默认模板的SimpleDateFormat对象</p>
+</li>
+<li><p>new SimpleDateFormat(String pattern)<br>创建指定模板的SimpleDateFormat对象</p>
+<pre><code>| y    | M    | d    | H    | m    | s    |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| 年   | 月   | 日   | 小时 | 分钟 | 秒   |</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>成员方法<ul>
+<li>String format(Date date)<br>将指定的时间对象按照指定的模板格式化成字符串</li>
+<li>Date parse(String string)<br>将指定的字符串按照指定的模板解析为时间对象</li>
+</ul>
+</li>
+<li>注意事项<br>  通过parse方法将字符串解析为时间对象时,传入的字符串必须与指定模板匹配,否则出现ParseException异常</li>
+</ul>
+<hr>
+<h3 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h3><ul>
+<li>获取对象<br>  Calendar calendar = Carlendar.getInstance()</li>
+<li>成员方法<ul>
+<li>int get(int field)<br>获取指定日历字段的值</li>
+<li>void add(int field,int value)<br>将指定日历字段的值增加或者减少指定值</li>
+<li>void set(int year,int month,int date)<br>设置当前日历对象的年,月,日</li>
+</ul>
+</li>
+<li>注意事项<br>  西方的月份周期是 0~11 , 获取时要进行 +1 ,才是我们的月份,设置时我们的月份 -1</li>
+</ul>
+<hr>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Kyle Sun</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://kylesun96.github.io/2019/12/18/Java基础/常用对象的API/">https://kylesun96.github.io/2019/12/18/Java基础/常用对象的API/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        <a href="/tags/学习笔记/"># 学习笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/24/Java基础/多线程/">多线程</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/18/Java基础/面向对象/">面向对象</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Kyle Sun | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+<div>
+​    
+​        <!-- 不蒜子统计 -->
+​        <span id="busuanzi_container_site_pv">
+​ 访问量:<span id="busuanzi_value_site_pv"></span>
+​        </span>
+​        <span class="post-meta-divider">|</span>
+​        <span id="busuanzi_container_site_uv" style="display:none">
+​ 访客数:<span id="busuanzi_value_site_uv"></span>
+​        </span>
+​        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+​    
+</div>
+
+
+<!--《添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+
+<script>
+    var now = new Date();
+
+
+    function createtime() {
+        var grt = new Date("09/27/2019 00:00:00"); 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间》 -->
+    
+    
+</footer>
+
+
+
+
+    </div>
+</body>
+</html>

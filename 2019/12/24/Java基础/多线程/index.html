@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Kyle Sun">
+
+
+
+    <meta name="description" content="O ever youthful,O ever weeping">
+
+
+
+<title>多线程 | KyleSun</title>
+
+
+
+    <link rel="icon" href="/ico/Saber (2).ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Kyle Sun</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Kyle Sun</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">多线程</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Kyle Sun</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十二月 24, 2019&nbsp;&nbsp;20:26:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java基础/">Java基础</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><ul>
+<li><p>概念<br>  程序执行过程中出现的非正常的情况</p>
+</li>
+<li><p>产生原理<br>  异常本身是一个类,产生异常就是创建异常类的对象并抛出异常对象的过程</p>
+</li>
+<li><p>体系结构</p>
+<ul>
+<li>Throwable<ul>
+<li>Error<br>  错误,系统级别的,程序员无法通过修改代码解决,例如服务器宕机,内存不足…</li>
+<li>Exception<br>  异常,代码级别的,程序员可以通过修改代码解决,例如空指针,索引越界…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分类</p>
+<ul>
+<li>编译时异常<br>Exception及其子类,写好代码后直接报错了,必须处理才能运行程序</li>
+<li>运行时异常<br>RuntimeException及其子类,编译的时候没有问题,运行时才出现</li>
+</ul>
+</li>
+<li><p>jvm处理异常方式</p>
+<ol>
+<li>将异常信息打印到控制台</li>
+<li>终止当前正在运行的程序(中断处理)</li>
+</ol>
+</li>
+<li><p>try…catch处理</p>
+<ul>
+<li>作用<br>用来处理异常,捕获异常,进行处理,程序继续执行</li>
+<li>格式<br>权限修饰符 返回值类型 方法名(参数列表){<pre><code>try{
+    可能产生异常的代码
+}catch(异常类名 对象名){
+    //处理异常的逻辑代码,一般是打印异常信息
+    e.printStackTrace();
+}</code></pre>}</li>
+<li>注意事项:    代码执行流程<ul>
+<li>try中产生异常,会执行catch中的代码,执行完catch中的代码,执行catch后面的代码</li>
+<li>try中没有产生异常,不会执行catch中的代码,执行完try中的代码,直接执行catch后面的代码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Throwable类中的成员方法</p>
+<ul>
+<li>String getMessage()<pre><code>返回此异常的简短描述</code></pre></li>
+<li>String toString()<pre><code>返回此异常对象的字符串表现形式</code></pre></li>
+<li>void printStackTrace()<pre><code>打印此异常对象的详细信息,jvm打印异常信息,默认使用的是此方法</code></pre></li>
+</ul>
+</li>
+<li><p>throws处理</p>
+<ul>
+<li>作用<br>用来处理异常,声明异常,将异常交给方法调用者处理</li>
+<li>格式<br>权限修饰符 返回值类型 方法名(参数列表) throws 异常类名{<br>throw new 异常类名();<br>}</li>
+<li>注意事项<br>throws声明多个异常时,如果有子父类关系,直接声明父类即可</li>
+</ul>
+</li>
+<li><p>throw关键字</p>
+<ul>
+<li><p>作用<br>在方法中抛出指定的异常</p>
+</li>
+<li><p>格式<br>权限修饰符 返回值类型 方法名(参数列表){</p>
+<pre><code>throw new 异常类名();</code></pre><p>}</p>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>throw关键字抛出异常后,必须处理<ul>
+<li>Exception:编译时异常,必须处理,要么throws,要么try…catch</li>
+<li>RuntimeException:运行时异常,可以不处理,默认交给jvm处理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>throws和throw的区别</p>
+<ul>
+<li>作用<br>throw用来产生异常,throws用来处理异常</li>
+<li>位置<br>throw用在方法中,throws用在方法声明上</li>
+<li>后接数据<br>throw后接的是异常对象,throws后接的是异常类名</li>
+</ul>
+</li>
+<li><p>自定义异常</p>
+<ul>
+<li><p>介绍<br>Java中提供的异常类不能满足我们的需求,可以自定义异常类</p>
+</li>
+<li><p>步骤</p>
+<ol>
+<li>定义一个类,继承Exception或RuntimeException</li>
+<li>添加一个空参构造(访问父类的构造方法)</li>
+<li>添加一个带参构造(访问父类的构造方法)</li>
+</ol>
+</li>
+<li><p>注意事项</p>
+<ol>
+<li>自定义异常类名,建议以Exception结尾(AxxException),标识这是一个异常类</li>
+<li>自定义异常类必须继承Exception或RuntimeException<ul>
+<li>继承Exception:编译时异常,方法中抛出此异常,必须处理,要么throws,要么try…catch</li>
+<li>继承RuntimeException:运行时异常,方法中抛出此异常,可以不处理(默认交给jvm处理)</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Kyle Sun</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://kylesun96.github.io/2019/12/24/Java基础/多线程/">https://kylesun96.github.io/2019/12/24/Java基础/多线程/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        <a href="/tags/学习笔记/"># 学习笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/24/Java基础/集合/">集合</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/18/Java基础/常用对象的API/">常用对象的API</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Kyle Sun | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+<div>
+​    
+​        <!-- 不蒜子统计 -->
+​        <span id="busuanzi_container_site_pv">
+​ 访问量:<span id="busuanzi_value_site_pv"></span>
+​        </span>
+​        <span class="post-meta-divider">|</span>
+​        <span id="busuanzi_container_site_uv" style="display:none">
+​ 访客数:<span id="busuanzi_value_site_uv"></span>
+​        </span>
+​        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+​    
+</div>
+
+
+<!--《添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+
+<script>
+    var now = new Date();
+
+
+    function createtime() {
+        var grt = new Date("09/27/2019 00:00:00"); 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间》 -->
+    
+    
+</footer>
+
+
+
+
+    </div>
+</body>
+</html>

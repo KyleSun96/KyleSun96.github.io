@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Kyle Sun">
+
+
+
+    <meta name="description" content="O ever youthful,O ever weeping">
+
+
+
+<title>集合 | KyleSun</title>
+
+
+
+    <link rel="icon" href="/ico/Saber (2).ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Kyle Sun</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Kyle Sun</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">集合</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Kyle Sun</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十二月 24, 2019&nbsp;&nbsp;20:44:21</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java基础/">Java基础</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><strong>数组和集合的区别</strong></p>
+<ul>
+<li>相同点<br>  都是容器,用来存储数据</li>
+<li>不同点<br>  数组的长度不可变,集合的长度可变<br>  数组既能存储基本类型又能存储引用类型,集合只能存储引用类型</li>
+</ul>
+<hr>
+<h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><ul>
+<li><p>数组和集合的区别</p>
+<ul>
+<li>相同点<br>都是容器,用来存储数据</li>
+<li>不同点<br>数组的长度不可变,集合的长度可变<br>数组既能存储基本类型又能存储引用类型,集合只能存储引用类型</li>
+</ul>
+</li>
+<li><p>Collection集合体系</p>
+<p>  Collection</p>
+<ul>
+<li><p>List</p>
+<ul>
+<li>ArrayList</li>
+<li>LinkedList</li>
+</ul>
+</li>
+<li><p>Set</p>
+<ul>
+<li>HashSet</li>
+<li>TreeSet</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>共性方法</p>
+<ul>
+<li>boolean add(E e)<br>向集合中添加指定的元素</li>
+<li>boolean remove(E e)<br>将集合中指定元素移除,如果要移除的相同元素有多个,只会移除第一个</li>
+<li>boolean contains(E e)<br>判断集合中是否包含指定元素</li>
+<li>boolean isEmpty()<br>判断集合是否为空</li>
+<li>int size()<br>获取集合的长度</li>
+<li>void clear()<br>清空集合中的元素</li>
+</ul>
+</li>
+<li><p>迭代器</p>
+<ul>
+<li><p>Iterator接口</p>
+<ul>
+<li>作用<br>  用来遍历集合</li>
+<li>获取<br>  Iterator iterator = 集合对象.iterator();</li>
+</ul>
+</li>
+<li><p>成员方法</p>
+<ul>
+<li>boolean hasNext()<br>  判断迭代器对象中是否有元素</li>
+<li>E next()<br>  去迭代器对象中获取元素</li>
+</ul>
+</li>
+<li><p>注意事项</p>
+<ol>
+<li>当迭代器对象中没有数据时,在使用next方法获取数据,会出现NoSuchElementException异常</li>
+<li>使用迭代器对象遍历集合的过程中,不能使用 <strong><em>集合对象</em></strong> 的方法修改集合的长度,否则出现并发修改异常(ConcurrentModifiCationException)<ul>
+<li>解决方式一:    使用 <strong><em>迭代器对象</em></strong> 的方法修改集合的长度</li>
+<li>解决方式二:    使用普通for循环遍历,修改集合的长度</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><ul>
+<li><p>List接口</p>
+<ul>
+<li>特点<br>存取有序,可以重复,有索引,可以使用普通for循环遍历</li>
+<li>共性方法<ul>
+<li>void add(int index,E e)<br>  将指定元素添加到集合中的指定位置</li>
+<li>E get(int index)<br>  获取集合中指定位置的元素</li>
+<li>E set(int index,E e)<br>  将集合中指定位置的元素更改为指定元素</li>
+<li>E remove(int index)<br>  将集合中指定位置的元素移除</li>
+</ul>
+</li>
+<li>注意事项<br>Collection中的remove方法接收的是元素,List中的remove方法接收的是索引</li>
+</ul>
+</li>
+<li><p>增强for</p>
+<ul>
+<li>原理<br>底层也是通过迭代器实现的,是JDK1.5之后出现的</li>
+<li>作用<br>用来遍历集合或者数组的</li>
+<li>格式<br>for(集合/数组中元素的数据类型 变量名:集合/数组名){<pre><code>//操作当前元素的逻辑
+sout(变量名);</code></pre>}</li>
+<li>注意事项<br>增强for底层是通过迭代器实现的,所以遍历的过程中不能修改集合的长度</li>
+</ul>
+</li>
+<li><p>数据结构</p>
+<ul>
+<li>栈结构<pre><code>特点:    先进后出,只能在栈顶进行添加和移除</code></pre></li>
+<li>队列结构<pre><code>特点:    先进先出,只能在队列的一端进行添加的操作,在另一端进行移除的操作</code></pre></li>
+<li>数组<br>  特点:    <ul>
+<li>查询快<br>在内存上是连续的,可以通过索引快速定位到要查找的元素</li>
+<li>增删慢<br>数组的长度是固定的,增删元素后,需要创建新的数组,对原来的数据进行复制</li>
+</ul>
+</li>
+<li>链表<br>  特点<ul>
+<li>查询慢<br>在内存上是不连续的,需要从一侧开始依次向后查询,效率低</li>
+<li>增删快<br>增删元素后,只需要修改对应元素的指向,其他元素位置不动</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ArrayList</p>
+<pre><code>特点:    底层是数组,查询快,增删慢</code></pre></li>
+<li><p>LinkedList</p>
+<ul>
+<li>特点:    底层是链表,查询慢,增删快</li>
+<li>特有方法<ul>
+<li>添加元素<ul>
+<li>void addFirst(E e)<br>将指定元素添加到列表的开头</li>
+<li>void addLast(E e)<br>将指定元素添加到列表的末尾</li>
+</ul>
+</li>
+<li>获取元素<pre><code>E getFirst()    获取列表的第一个元素
+E getLast()    获取列表的最后一个元素</code></pre></li>
+<li>移除元素<pre><code>E removeFirst()    移除列表的第一个元素
+E removeLast()    移除列表的最后一个元素</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>总结</p>
+<ol>
+<li>查询多,增删少:    ArrayList</li>
+<li>查询少,增删多:    LinkedList</li>
+<li>不知道具体情况:    推荐使用ArrayList</li>
+<li>实际开发中用的最多的是:    ArrayList</li>
+</ol>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Kyle Sun</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://kylesun96.github.io/2019/12/24/Java基础/集合/">https://kylesun96.github.io/2019/12/24/Java基础/集合/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        <a href="/tags/学习笔记/"># 学习笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/28/总结梳理/SSM框架配置的思路整理/">SSM框架配置的思路整理</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/24/Java基础/多线程/">多线程</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Kyle Sun | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+<div>
+​    
+​        <!-- 不蒜子统计 -->
+​        <span id="busuanzi_container_site_pv">
+​ 访问量:<span id="busuanzi_value_site_pv"></span>
+​        </span>
+​        <span class="post-meta-divider">|</span>
+​        <span id="busuanzi_container_site_uv" style="display:none">
+​ 访客数:<span id="busuanzi_value_site_uv"></span>
+​        </span>
+​        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+​    
+</div>
+
+
+<!--《添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+
+<script>
+    var now = new Date();
+
+
+    function createtime() {
+        var grt = new Date("09/27/2019 00:00:00"); 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间》 -->
+    
+    
+</footer>
+
+
+
+
+    </div>
+</body>
+</html>

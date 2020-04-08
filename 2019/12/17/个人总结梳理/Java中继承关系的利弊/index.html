@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Kyle Sun">
+
+
+
+    <meta name="description" content="O ever youthful,O ever weeping">
+
+
+
+<title>Java中继承关系的利弊 | KyleSun</title>
+
+
+
+    <link rel="icon" href="/ico/Saber (2).ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Kyle Sun</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Kyle Sun</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/essay">心情</a>
+                
+                    <a class="menu-item" href="/gallery">相册</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                    <a class="menu-item" href="/link">友链</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java中继承关系的利弊</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Kyle Sun</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十二月 17, 2019&nbsp;&nbsp;21:01:29</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/个人总结梳理/">个人总结梳理</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h4 id="Java中继承关系利弊"><a href="#Java中继承关系利弊" class="headerlink" title="Java中继承关系利弊"></a>Java中继承关系利弊</h4><ul>
+<li><p>继承的好处</p>
+<ol>
+<li>提高了代码的复用性,减少代码书写量</li>
+<li>提高了代码的维护性,容易修改和扩展已有的实现</li>
+<li>让类与类之间产生了关系,是多态的前提</li>
+</ol>
+</li>
+<li><p>继承的弊端</p>
+<ol>
+<li>类的耦合性增强了.开发的原则:高内聚,低耦合.<ul>
+<li>耦合：类与类的关系</li>
+<li>内聚：就是自己完成某件事情的能力</li>
+</ul>
+</li>
+<li>打破了封装,因为基类向子类暴露了实现细节<br>类仅仅通过有限的方法暴露必要的操作，也能提高类的易用性。如果我们把类属性都暴露给类的调用者，调用者想要正确地操作这些属性，就势必要对业务细节有足够的了解。而这对于调用者来说也是一种负担。相反，如果我们将属性封装起来，暴露少许的几个必要的方法给调用者使用，调用者就不需要了解太多背后的业务细节，用错的概率就减少很多。</li>
+<li>白盒重用,因为基类的内部细节通常对子类是可见的        (?????)</li>
+<li>当父类的实现改变时可能要相应的对子类做出改变</li>
+<li>不能在运行时改变由父类继承来的实现        (?????)</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="方法重写的理解"><a href="#方法重写的理解" class="headerlink" title="方法重写的理解"></a>方法重写的理解</h4><ol>
+<li><p>方法重写又称方法覆盖.如果在子类中定义某方法与其父类有相同的名称和参数,我们说该方法被重写 (Overriding).在Java中,子类可继承父类中的方法,而不需要重新编写相同的方法;但有时子类并不想原封不动地继承父类的方法,而是想作一定的修改,这就需要采用方法的重写</p>
+</li>
+<li><p>若子类中的方法与父类中的某一方法具有相同的方法名、返回类型和参数列表,则新方法将覆盖原有的方法<br> 如需父类中原有的方法,可使用super关键字引用当前类的父类</p>
+</li>
+<li><p>子类函数的访问修饰权限不能小于于父类        (?????)</p>
+</li>
+</ol>
+<hr>
+<h4 id="对象创建的过程和this的本质"><a href="#对象创建的过程和this的本质" class="headerlink" title="对象创建的过程和this的本质"></a>对象创建的过程和this的本质</h4><ul>
+<li><p>构造方法是创建Java对象的重要途径,通过new关键字调用构造器时,构造器也确实返回该类的对象,但这个对象并不是完全由构造器负责创建.创建一个对象分为如下四步：</p>
+<ol>
+<li><p>分配对象空间,并将对象成员变量初始化为0或空</p>
+</li>
+<li><p>执行属性值的显示初始化</p>
+</li>
+<li><p>执行构造方法</p>
+</li>
+<li><p>返回对象的地址给相关的变量</p>
+<p><strong>this的本质就是“创建好的对象的地址”! 由于在构造方法调用前,对象已经创建.因此,在构造方法中也可以使用this代表“当前对象”.</strong></p>
+</li>
+</ol>
+</li>
+<li><p>this的常见用法：</p>
+<ol>
+<li>在程序中产生二义性之处，应使用this来指明当前对象:<ul>
+<li>普通方法中,this总是指向调用该方法的对象</li>
+<li>构造方法中,this总是指向正要初始化的对象</li>
+</ul>
+</li>
+<li>使用this关键字调用重载的构造方法,避免相同的初始化代码.但只能在构造方法中用,并且必须位于构造方法的第一句</li>
+<li>this不能用于static方法中    (?????)</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="super"><a href="#super" class="headerlink" title="super     (??????)"></a>super     (??????)</h4><p>super是直接父类对象的引用。可以通过super来访问父类中被子类覆盖的方法或属性。<br>使用super调用普通方法，语句没有位置限制，可以在子类中随便调用。<br>若是构造方法的第一行代码没有显式的调用super(…)或者this(…);那么Java默认都会调用super(),含义是调用父类的无参数构造方法。这里的super()可以省略。</p>
+<ul>
+<li>访问父类的成员变量:    super.变量名</li>
+<li>访问父类的成员方法:    super.方法名()</li>
+<li>访问父类的构造方法:    super()</li>
+</ul>
+<hr>
+<h4 id="static关键字的意义"><a href="#static关键字的意义" class="headerlink" title="static关键字的意义"></a>static关键字的意义</h4><p>在类中,用static声明的成员变量为静态成员变量,也称为类变量. 类变量的生命周期和类相同,在整个应用程序执行期间都有效.它有如下特点：<br>　　1. 为该类的公用变量,属于类,被该类的所有实例共享，在类被载入时被显式初始化<br>　　2. 对于该类的所有对象来说,static成员变量只有一份.被该类的所有对象共享!<br>　　3. 一般用“类名.类属性/方法”来调用.(也可以通过对象引用或类名(不需要实例化)访问静态成员.)<br>　　4. 静态成员方法只能访问静态成员</p>
+<p><strong>核心要点</strong>：<br>  1). static修饰的成员变量和方法,从属于类<br>  2). 普通变量和方法从属于对象的</p>
+<hr>
+<h4 id="final关键字的意义"><a href="#final关键字的意义" class="headerlink" title="final关键字的意义"></a>final关键字的意义</h4><ol>
+<li>修饰变量: 被他修饰的变量不可改变。一旦赋了初值，就不能被重新赋值。</li>
+<li>修饰方法：该方法不可被子类重写。但是可以被重载!</li>
+<li>修饰类: 修饰的类不能被继承。比如：Math、String等。</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Kyle Sun</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://kylesun96.github.io/2019/12/17/个人总结梳理/Java中继承关系的利弊/">https://kylesun96.github.io/2019/12/17/个人总结梳理/Java中继承关系的利弊/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        <a href="/tags/学习笔记/"># 学习笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/18/Java基础/面向对象/">面向对象</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/17/Intellij IDEA/Idea中取消相似代码检测/">IDEA中取消相似代码检测</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Kyle Sun | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+
+​    
+
+
+
+<!--《添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+
+<script>
+    var now = new Date();
+
+
+    function createtime() {
+        var grt = new Date("09/27/2019 00:00:00"); 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间》 -->
+    
+    
+</footer>
+
+
+
+
+    </div>
+</body>
+</html>
