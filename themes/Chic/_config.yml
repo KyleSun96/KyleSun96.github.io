@@ -12,7 +12,7 @@ nav:
   友链: /link
 
 # favicon
-favicon: /ico/Saber (2).ico
+favicon: /ico/Berserker.ico
 
 # Profile
 nickname: O ever youthful , O ever powerful
@@ -94,7 +94,7 @@ stylesheets:
 
 # 是否开启访问量统计功能(不蒜子)
 busuanzi:
- enable: true
+ enable: false
 
 
 # scripts loaded in the end of the body
