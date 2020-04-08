@@ -94,7 +94,7 @@ stylesheets:
 
 # 是否开启访问量统计功能(不蒜子)
 busuanzi:
- enable: false
+ enable: true
 
 
 # scripts loaded in the end of the body
