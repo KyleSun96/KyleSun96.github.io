@@ -1,0 +1,233 @@
+# trueatar:
+avatar:
+  enable: true
+  url: /images/avatar.jpg
+  rounded: true
+  opacity: 1
+  mickey_mouse: false
+
+
+# Favicon
+favicon: /ico/Berserker.ico
+
+
+# Social Links.
+social:
+  - name: GitHub
+    link: https://kylesun96.github.io/
+    icon: icon-github-line
+    color: "#181717"
+  - name: E-Mail
+    link: mailto:swy0907163@163.com
+    icon: icon-mail-line
+    color: "#8E71C1"
+  - name: 网易云音乐
+    link: https://music.163.com/#/user/home?id=395966039
+    icon: icon-netease-cloud-music-line
+    color: "#C20C0C"
+  - name: 哔哩哔哩
+    link: https://space.bilibili.com/49793838
+    icon: icon-bilibili-line
+    color: "#FF8EB3"
+  - name: 微信公众号
+    link: /images/wechat.jpg
+    icon: icon-wechat-2-line
+    color: "#1AAD19"
+
+
+# UI
+banner:
+  enable: true
+  title: 遇见凯尔
+  src: /js/ui/banner.js
+  cloud: true
+  go_down:
+    enable: true
+    icon: icon-arrow-down-s-line
+
+
+# 公告:它将显示在所有文章卡片的最上方，标语的下方
+notice:
+  enable: false
+  content: Thanks for watching my blog.
+
+
+# 图片背景
+bg_image:
+  enable: true
+  url: /images/bg_img.jpg
+
+  # blur: 30px
+  opacity: 0.8
+
+
+# 搜索背景
+search:
+  bg_image: /images/stars-timing-2.jpg
+  # placeholder: 想要搜些什么？
+
+
+# Posts / Categories / Tags in sidebar 侧边栏背景
+sidebar:
+  bg_image: /images/stars-timing-1.jpg
+  bg_position: bottom 1rem center
+
+
+# 随机多边形背景
+trianglify:
+  enable: false
+  cell_size: 75
+  width: 800
+  height: 600
+  palette: '["YlGnBu", "GnBu", "Purples", "Blues"]'
+  opacity: 0.5
+
+
+# 打赏:开启后，将在每篇文章或页面末尾显示打赏按钮
+reward_settings:
+  enable: true
+  icon: icon-hand-coin-line
+  comment: 我很可爱，请给我钱
+
+
+# 打赏二维码
+reward:
+  - name: 支付宝
+    path: /images/alipay-qrcode.jpg
+    color: "#00A3EE"
+    icon: icon-alipay-line
+  - name: 微信支付
+    path: /images/wechatpay-qrcode.jpg
+    color: "#2DC100"
+    icon: icon-wechat-pay-line
+
+valine:
+  enable: true
+  appId: 8DzdmXzOfAbImjcJHgrQa2pc-9Nh9j0Va
+  appKey: YOwECKuCGF8rEL62cimWjucU
+
+  # https://github.com/DesertsP/Valine-Admin
+  # https://valine.yunyoujun.cn
+  placeholder: 大佬求指教&nbsp_(:з」∠)_ （填写邮箱可以收到回复通知～）
+  visitor: true
+  recordIP: true
+  enableQQ: true
+  visitor_index: false
+
+footer:
+  since: 2019
+  icon:
+    name: icon-cloud-line
+    animated: true
+    color: "#0078E7"
+  beian:
+    enable: false
+    icp: 苏ICP备17038157号
+  powered:
+    enable: true
+  custom_text: <a style="display:inline-block" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="blank" title="又拍云"><img height="30" src="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/logo/upyun-logo.png" alt="upyun"/></a>
+
+  # ...
+
+engine_search:
+  enable: true
+
+algolia_search:
+  enable: false
+
+  # ...
+
+
+google_adsense:
+  enable: true
+  client: ca-pub-2245427233262012
+
+
+google_analytics:
+  enable: true
+  id: UA-121354150-1
+
+
+# 编辑文章的链接
+post_edit:
+  enable: false
+  url: https://github.com/YunYouJun/yunyoujun.github.io/tree/hexo/source/
+
+
+albums:
+  enable: true
+
+
+tags:
+  动画: crimson
+  漫画: orange
+  Parcel: "#21374b"
+  学习: saddlebrown
+  MAD: crimson
+  教程: royalblue
+  笔记: dimgray
+  分享: blue
+  随笔: mediumpurple
+  Blender: "#d04d2d"
+  Linux: "#2577b1"
+  中传: "#ccb44b"
+  部落: "#DD306A"
+  科幻: midnightblue
+
+
+local_search:
+  enable: false
+  src: /js/search/local-search.js
+
+
+categories:
+  云游的小视频: "#FB7299"
+
+
+# 页面链接
+pages:
+  - name: 我的小伙伴们
+    url: /links/
+    icon: icon-genderless-line
+    color: dodgerblue
+  - name: 喜欢的女孩子
+    url: /girls/
+    icon: icon-women-line
+    color: hotpink
+
+
+girls:
+  enable: true
+
+dns_prefetch:
+  - https://cos.yunyoujun.cn
+# cdn:
+#   pre: https://cdn.jsdelivr.net/gh/YunYouJun/yunyoujun.github.io@latest
+
+
+# 导航
+menu:
+  home:
+    path: /
+    icon: icon-home-4-line
+  archives:
+    path: /archives
+    icon: icon-archive-line
+  tags:
+    path: /tags
+    icon: icon-price-tag-3-line
+  categories:
+    path: /categories
+    icon: icon-folder-2-line
+  custom:
+    title: 留言板
+    path: /about/#comment
+    icon: icon-clipboard-line
+
+cursor:
+  enable: true
+
+baidu_push: true
+
+pjax:
+  enable: false
