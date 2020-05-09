@@ -8,7 +8,7 @@ avatar:
 
 
 # Favicon
-favicon: /ico/Berserker.ico
+favicon: /ico/Archer.ico
 
 
 # Social Links.
@@ -102,7 +102,7 @@ reward:
     icon: icon-wechat-pay-line
 
 valine:
-  enable: true
+  enable: false
   appId: 8DzdmXzOfAbImjcJHgrQa2pc-9Nh9j0Va
   appKey: YOwECKuCGF8rEL62cimWjucU
 
@@ -129,8 +129,13 @@ footer:
 
   # ...
 
+
 engine_search:
   enable: true
+  href: "https://www.google.com/search?q=site:"
+  # href: "https://www.baidu.com/s?wd=site:"
+  # href: "https://www.bing.com/search?q=site:"
+  domain: kylesun96.github.io
 
 algolia_search:
   enable: false
@@ -190,7 +195,7 @@ pages:
     url: /links/
     icon: icon-genderless-line
     color: dodgerblue
-  - name: 喜欢的女孩子
+  - name: 我的老婆们
     url: /girls/
     icon: icon-women-line
     color: hotpink
@@ -231,3 +236,10 @@ baidu_push: true
 
 pjax:
   enable: false
+  
+# 评论
+github_issues:
+  enable: true
+  username: KyleSun
+  repository: kylesun96.github.io
+  filters: is:issue
