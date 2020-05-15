@@ -114,6 +114,8 @@ valine:
   enableQQ: true
   visitor_index: false
 
+
+# 页脚
 footer:
   since: 2019
   icon:
@@ -125,14 +127,18 @@ footer:
     icp: 苏ICP备17038157号
   powered:
     enable: true
-  custom_text: <a style="display:inline-block" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="blank" title="又拍云"><img height="30" src="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/logo/upyun-logo.png" alt="upyun"/></a>
+  live_time:
+    enable: true
+    prefix: 本博客已萌萌哒地运行
+    suffix: (●'◡'●)
+    start_time: "2019-09-27T00:00:00"
 
   # ...
 
-
 engine_search:
-  enable: true
+  enable: false
   href: "https://www.google.com/search?q=site:"
+
   # href: "https://www.baidu.com/s?wd=site:"
   # href: "https://www.bing.com/search?q=site:"
   domain: kylesun96.github.io
@@ -142,15 +148,15 @@ algolia_search:
 
   # ...
 
-
 google_adsense:
-  enable: true
+  enable: false
   client: ca-pub-2245427233262012
 
-
 google_analytics:
-  enable: true
+  enable: false
   id: UA-121354150-1
+
+
 
 
 # 编辑文章的链接
@@ -178,7 +184,6 @@ tags:
   中传: "#ccb44b"
   部落: "#DD306A"
   科幻: midnightblue
-
 
 local_search:
   enable: false
@@ -236,7 +241,7 @@ baidu_push: true
 
 pjax:
   enable: false
-  
+
 # 评论
 github_issues:
   enable: true
