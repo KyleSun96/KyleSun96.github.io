@@ -14,7 +14,7 @@ favicon: /ico/Archer.ico
 # Social Links.
 social:
   - name: GitHub
-    link: https://kylesun96.github.io/
+    link: https://github.com/KyleSun96
     icon: icon-github-line
     color: "#181717"
   - name: E-Mail
@@ -133,7 +133,6 @@ footer:
     suffix: (●'◡'●)
     start_time: "2019-09-27T00:00:00"
 
-  # ...
 
 engine_search:
   enable: false
@@ -146,16 +145,15 @@ engine_search:
 algolia_search:
   enable: false
 
-  # ...
 
 google_adsense:
   enable: false
   client: ca-pub-2245427233262012
 
+
 google_analytics:
   enable: false
   id: UA-121354150-1
-
 
 
 
@@ -185,6 +183,7 @@ tags:
   部落: "#DD306A"
   科幻: midnightblue
 
+
 local_search:
   enable: false
   src: /js/search/local-search.js
@@ -208,6 +207,7 @@ pages:
 
 girls:
   enable: true
+
 
 dns_prefetch:
   - https://cos.yunyoujun.cn

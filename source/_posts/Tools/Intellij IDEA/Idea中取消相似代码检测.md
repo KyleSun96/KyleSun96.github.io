@@ -5,7 +5,7 @@ tags:
  - Java
  - Intellij IDEA
 categories:
- - Intellij IDEA
+ - Tools
 comments: true
 keywords: 
 description: 

@@ -7,10 +7,11 @@ tags:
 categories:
  - 总结梳理
 comments: true
-keywords: 
-description: 
-
 ---
+
+> 关于SSM框架环境搭建的简单思路梳理和总结
+
+<!-- more -->
 
 # 配置文件的思路及整理
 
