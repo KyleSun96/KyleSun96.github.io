@@ -5,7 +5,7 @@ layout: about
 type: about
 ---
 
-> 愿你被世界温柔以待
+> 愿每个努力的人，都被世界温柔相待
 
 ### 关于我
 
@@ -22,7 +22,12 @@ type: about
 
 1. Java
 2. Spring
-3. 持续部署
+3. SpringMVC
+4. Mybatis
+5. SpringBoot
+6. SpringCloud
+7. Mysql
+8. 持续部署
 
 ### 一点要求
 
