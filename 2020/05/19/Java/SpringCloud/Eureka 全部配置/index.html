@@ -1,0 +1,437 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Eureka 全部配置"><meta name="keywords" content="SpringCloud,Eureka"><meta name="author" content="Kyle Sun"><meta name="copyright" content="Kyle Sun"><meta name="theme-color" content="#0078E7"><title>Eureka 全部配置 | 遇见凯尔</title><link rel="shortcut icon" href="/ico/Archer.ico"><link rel="mask-icon" href="/ico/Archer.ico" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="dns-prefetch" href="https://cos.yunyoujun.cn"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    let Yun = window.Yun || {};
+    let CONFIG = {"root":"/","title":"遇见凯尔","version":"0.6.3","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&amp;family=Source+Code+Pro&amp;display=swap" media="none" onload="this.media='all'"><script src="//at.alicdn.com/t/font_1140697_rtqh36oinzl.js" async></script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle sidebar-toggle-fixed hty-icon-button"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><aside class="sidebar"><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc sidebar-nav-active hty-icon-button" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"/></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"/></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about" title="Kyle Sun"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="Kyle Sun"></a><div class="site-author-name"><a href="/about/">Kyle Sun</a></div><a class="site-name" href="/about/site.html">遇见凯尔</a><sub class="site-subtitle"></sub><div class="site-desciption">O ever youthful,O ever weeping</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"/></svg></span></a><div class="site-state-item site-state-posts"><a href="/archives" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"/></svg></span><span class="site-state-item-count">14</span></a></div><div class="site-state-item site-state-categories"><a href="/categories" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"/></svg></span><span class="site-state-item-count">6</span></a></div><div class="site-state-item site-state-tags"><a href="/tags" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"/></svg></span><span class="site-state-item-count">12</span></a></div><a class="site-state-item hty-icon-button" href="/about/#comment" title="留言板"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-clipboard-line"/></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://kylesun96.github.io/" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"/></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:swy0907163@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"/></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=395966039" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"/></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/49793838" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"/></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/images/wechat.jpg" title="微信公众号" target="_blank" style="color:#1AAD19"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wechat-2-line"/></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"/></svg></a><a class="links-item hty-icon-button" href="/girls/" title="我的老婆们" style="color:hotpink"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-women-line"/></svg></a></div></div><script defer src="/js/sidebar.js"></script><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Euraka配置详解"><span class="toc-number">1.</span> <span class="toc-text">Euraka配置详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Eureka-Instance实例信息配置"><span class="toc-number">1.1.</span> <span class="toc-text">Eureka Instance实例信息配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eureka-Client客户端特性配置"><span class="toc-number">1.2.</span> <span class="toc-text">Eureka Client客户端特性配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eureka-Server注册中心端配置"><span class="toc-number">1.3.</span> <span class="toc-text">Eureka Server注册中心端配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eureka-Server注册中心仪表盘配置"><span class="toc-number">1.4.</span> <span class="toc-text">Eureka Server注册中心仪表盘配置</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://kylesun96.github.io/2020/05/19/Java/SpringCloud/Eureka 全部配置/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Kyle Sun"><meta itemprop="description" content="Eureka 全部配置"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="遇见凯尔"></span><header class="post-header"><h1 class="post-title" itemprop="name headline" style="color: undefined">Eureka 全部配置</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"/></svg></span> <time title="创建时间：2020-05-19 22:43:50" itemprop="dateCreated datePublished" datetime="2020-05-19T22:43:50+08:00">2020-05-19</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"/></svg></span> <time title="修改时间：2020-05-21 17:01:28" itemprop="dateModified" datetime="2020-05-21T17:01:28+08:00">2020-05-21</time></div><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"/></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/查询文档/" itemprop="url" rel="index"><span itemprop="text">查询文档</span></a></span> > <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/查询文档/SpringCloud/" itemprop="url" rel="index"><span itemprop="text">SpringCloud</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/SpringCloud/"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"/></svg></span><span class="tag-name">SpringCloud</span></a><a class="tag" href="/tags/Eureka/"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"/></svg></span><span class="tag-name">Eureka</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content post-markdown"><blockquote>
+<p>查询文档，以便于查询和修改 SpringCloud中Eureka的相关配置</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Euraka配置详解"><a href="#Euraka配置详解" class="headerlink" title="Euraka配置详解"></a>Euraka配置详解</h1><p>Eureka包含四个部分的配置</p>
+<ol>
+<li>instance：当前Eureka Instance实例信息配置</li>
+<li>client：Eureka Client客户端特性配置</li>
+<li>server：Eureka Server注册中心特性配置</li>
+<li>dashboard：Eureka Server注册中心仪表盘配置</li>
+</ol>
+<h2 id="Eureka-Instance实例信息配置"><a href="#Eureka-Instance实例信息配置" class="headerlink" title="Eureka Instance实例信息配置"></a>Eureka Instance实例信息配置</h2><p>Eureka Instance的配置信息全部保存在org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean配置类里，实际上它是com.netflix.appinfo.EurekaInstanceConfig的实现类，替代了netflix的com.netflix.appinfo.CloudInstanceConfig的默认实现。</p>
+<p>Eureka Instance的配置信息全部以eureka.instance.xxx的格式配置。</p>
+<p><strong>配置列表</strong></p>
+<ul>
+<li>appname = unknown</li>
+</ul>
+<p>应用名，首先获取spring.application.name的值，如果取值为空，则取默认unknown。</p>
+<ul>
+<li>appGroupName = null</li>
+</ul>
+<p>应用组名</p>
+<ul>
+<li>instanceEnabledOnit = false</li>
+</ul>
+<p>实例注册到Eureka上是，是否立刻开启通讯。有时候应用在准备好服务之前需要一些预处理。</p>
+<ul>
+<li>nonSecurePort = 80</li>
+</ul>
+<p>非安全的端口</p>
+<ul>
+<li>securePort = 443</li>
+</ul>
+<p>安全端口</p>
+<ul>
+<li>nonSecurePortEnabled = true</li>
+</ul>
+<p>是否开启非安全端口通讯</p>
+<ul>
+<li>securePortEnabled = false</li>
+</ul>
+<p>是否开启安全端口通讯</p>
+<ul>
+<li>leaseRenewalIntervalInSeconds = 30</li>
+</ul>
+<p>实例续约间隔时间</p>
+<ul>
+<li>leaseExpirationDurationInSeconds = 90</li>
+</ul>
+<p>实例超时时间，表示最大leaseExpirationDurationInSeconds秒后没有续约，Server就认为他不可用了，随之就会将其剔除。</p>
+<ul>
+<li>virtualHostName = unknown</li>
+</ul>
+<p>虚拟主机名，首先获取spring.application.name的值，如果取值为空，则取默认unknown。</p>
+<ul>
+<li>instanceId</li>
+</ul>
+<p>注册到eureka上的唯一实例ID，不能与相同appname的其他实例重复。</p>
+<ul>
+<li>secureVirtualHostName = unknown</li>
+</ul>
+<p>安全虚拟主机名，首先获取spring.application.name的值，如果取值为空，则取默认unknown。</p>
+<ul>
+<li>metadataMap = new HashMap();</li>
+</ul>
+<p>实例元数据，可以供其他实例使用。比如spring-boot-admin在监控时，获取实例的上下文和端口。</p>
+<ul>
+<li>dataCenterInfo = new MyDataCenterInfo(DataCenterInfo.Name.MyOwn);</li>
+</ul>
+<p>实例部署的数据中心。如AWS、MyOwn。</p>
+<ul>
+<li>ipAddress=null</li>
+</ul>
+<p>实例的IP地址</p>
+<ul>
+<li>statusPageUrlPath = “/actuator/info”</li>
+</ul>
+<p>实例状态页相对url</p>
+<ul>
+<li>statusPageUrl = null</li>
+</ul>
+<p>实例状态页绝对URL</p>
+<ul>
+<li>homePageUrlPath = “/“</li>
+</ul>
+<p>实例主页相对URL</p>
+<ul>
+<li>homePageUrl = null</li>
+</ul>
+<p>实例主页绝对URL</p>
+<ul>
+<li>healthCheckUrlUrlPath = “/actuator/health”</li>
+</ul>
+<p>实例健康检查相对URL</p>
+<ul>
+<li>healthCheckUrl = null</li>
+</ul>
+<p>实例健康检查绝对URL</p>
+<ul>
+<li>secureHealthCheckUrl = null</li>
+</ul>
+<p>实例安全的健康检查绝对URL</p>
+<ul>
+<li>namespace = “eureka”</li>
+</ul>
+<p>配置属性的命名空间（Spring Cloud中被忽略）</p>
+<ul>
+<li>hostname = null</li>
+</ul>
+<p>主机名,不配置的时候讲根据操作系统的主机名来获取</p>
+<ul>
+<li>preferIpAddress = false</li>
+</ul>
+<p>是否优先使用IP地址作为主机名的标识</p>
+<h2 id="Eureka-Client客户端特性配置"><a href="#Eureka-Client客户端特性配置" class="headerlink" title="Eureka Client客户端特性配置"></a>Eureka Client客户端特性配置</h2><p>Eureka Client客户端特性配置是对作为Eureka客户端的特性配置，包括Eureka注册中心，本身也是一个Eureka Client。</p>
+<p>Eureka Client特性配置全部在org.springframework.cloud.netflix.eureka.EurekaClientConfigBean中，实际上它是com.netflix.discovery.EurekaClientConfig的实现类，替代了netxflix的默认实现。</p>
+<p>Eureka Client客户端特性配置全部以eureka.client.xxx的格式配置。</p>
+<p><strong>配置列表</strong></p>
+<ul>
+<li>enabled=true</li>
+</ul>
+<p>是否启用Eureka client。</p>
+<ul>
+<li>registryFetchIntervalSeconds=30</li>
+</ul>
+<p>定时从Eureka Server拉取服务注册信息的间隔时间</p>
+<ul>
+<li>instanceInfoReplicationIntervalSeconds=30</li>
+</ul>
+<p>定时将实例信息（如果变化了）复制到Eureka Server的间隔时间。（InstanceInfoReplicator线程）</p>
+<ul>
+<li>initialInstanceInfoReplicationIntervalSeconds=40</li>
+</ul>
+<p>首次将实例信息复制到Eureka Server的延迟时间。（InstanceInfoReplicator线程）</p>
+<ul>
+<li>eurekaServiceUrlPollIntervalSeconds=300</li>
+</ul>
+<p>拉取Eureka Server地址的间隔时间（Eureka Server有可能增减）</p>
+<ul>
+<li>proxyPort=null</li>
+</ul>
+<p>Eureka Server的代理端口</p>
+<ul>
+<li>proxyHost=null</li>
+</ul>
+<p>Eureka Server的代理主机名</p>
+<ul>
+<li>proxyUserName=null</li>
+</ul>
+<p>Eureka Server的代理用户名</p>
+<ul>
+<li>proxyPassword=null</li>
+</ul>
+<p>Eureka Server的代理密码</p>
+<ul>
+<li>eurekaServerReadTimeoutSeconds=8</li>
+</ul>
+<p>从Eureka Server读取信息的超时时间</p>
+<ul>
+<li>eurekaServerConnectTimeoutSeconds=5</li>
+</ul>
+<p>连接Eureka Server的超时时间</p>
+<ul>
+<li>backupRegistryImpl=null</li>
+</ul>
+<p>Eureka Client第一次启动时获取服务注册信息的调用的回溯实现。Eureka Client启动时首次会检查有没有BackupRegistry的实现类，如果有实现类，则优先从这个实现类里获取服务注册信息。</p>
+<ul>
+<li>eurekaServerTotalConnections=200</li>
+</ul>
+<p>Eureka client连接Eureka Server的链接总数</p>
+<ul>
+<li>eurekaServerTotalConnectionsPerHost=50</li>
+</ul>
+<p>Eureka client连接单台Eureka Server的链接总数</p>
+<ul>
+<li>eurekaServerURLContext=null</li>
+</ul>
+<p>当Eureka server的列表在DNS中时，Eureka Server的上下文路径。如<a href="http://xxxx/eureka。" target="_blank" rel="noopener">http://xxxx/eureka。</a></p>
+<ul>
+<li>eurekaServerPort=null</li>
+</ul>
+<p>当Eureka server的列表在DNS中时，Eureka Server的端口。</p>
+<ul>
+<li>eurekaServerDNSName=null</li>
+</ul>
+<p>当Eureka server的列表在DNS中时，且要通过DNSName获取Eureka Server列表时，DNS名字。</p>
+<ul>
+<li>region=”us-east-1”</li>
+</ul>
+<p>实例所属区域。</p>
+<ul>
+<li>eurekaConnectionIdleTimeoutSeconds = 30</li>
+</ul>
+<p>Eureka Client和Eureka Server之间的Http连接的空闲超时时间。</p>
+<ul>
+<li>heartbeatExecutorThreadPoolSize=2</li>
+</ul>
+<p>心跳（续约）执行器线程池大小。</p>
+<ul>
+<li>heartbeatExecutorExponentialBackOffBound=10</li>
+</ul>
+<p>心跳执行器在续约过程中超时后的再次执行续约的最大延迟倍数。默认最大延迟时间=10 * eureka.instance.leaseRenewalIntervalInSeconds</p>
+<ul>
+<li>cacheRefreshExecutorThreadPoolSize=2</li>
+</ul>
+<p>cacheRefreshExecutord的线程池大小（获取注册信息）</p>
+<ul>
+<li>cacheRefreshExecutorExponentialBackOffBound=10</li>
+</ul>
+<p>cacheRefreshExecutord的再次执行的最大延迟倍数。默认最大延迟时间=10 *eureka.client.registryFetchIntervalSeconds</p>
+<ul>
+<li>serviceUrl= new HashMap();serviceUrl.put(DEFAULT_ZONE, DEFAULT_URL);</li>
+</ul>
+<p>Eureka Server的分区地址。默认添加了一个defualtZone。也就是最常用的配置eureka.client.service-url.defaultZone=xxx</p>
+<ul>
+<li>registerWithEureka=true</li>
+</ul>
+<p>是否注册到Eureka Server。</p>
+<ul>
+<li>preferSameZoneEureka=true</li>
+</ul>
+<p>是否使用相同Zone下的Eureka server。</p>
+<ul>
+<li>logDeltaDiff=false</li>
+</ul>
+<p>是否记录Eureka Server和Eureka Client之间注册信息的差异</p>
+<ul>
+<li>disableDelta=false</li>
+</ul>
+<p>是否开启增量同步注册信息。</p>
+<ul>
+<li>fetchRemoteRegionsRegistry=null</li>
+</ul>
+<p>获取注册服务的远程地区，以逗号隔开。</p>
+<ul>
+<li>availabilityZones=new HashMap()</li>
+</ul>
+<p>可用分区列表。用逗号隔开。</p>
+<ul>
+<li>filterOnlyUpInstances = true</li>
+</ul>
+<p>是否只拉取UP状态的实例。</p>
+<ul>
+<li>fetchRegistry=true</li>
+</ul>
+<p>是否拉取注册信息。</p>
+<ul>
+<li>shouldUnregisterOnShutdown = true</li>
+</ul>
+<p>是否在停止服务的时候向Eureka Server发起Cancel指令。</p>
+<ul>
+<li>shouldEnforceRegistrationAtInit = false</li>
+</ul>
+<p>是否在初始化过程中注册服务。</p>
+<h2 id="Eureka-Server注册中心端配置"><a href="#Eureka-Server注册中心端配置" class="headerlink" title="Eureka Server注册中心端配置"></a>Eureka Server注册中心端配置</h2><p>Eureka Server注册中心端的配置是对注册中心的特性配置。Eureka Server的配置全部在org.springframework.cloud.netflix.eureka.server.EurekaServerConfigBean里，实际上它是com.netflix.eureka.EurekaServerConfig的实现类，替代了netflix的默认实现。</p>
+<p>Eureka Server的配置全部以eureka.server.xxx的格式进行配置。</p>
+<p><strong>配置列表</strong></p>
+<ul>
+<li>enableSelfPreservation=true</li>
+</ul>
+<p>是否开启自我保护</p>
+<ul>
+<li>renewalPercentThreshold = 0.85</li>
+</ul>
+<p>自我保护续约百分比阀值因子。如果实际续约数小于续约数阀值，则开启自我保护</p>
+<ul>
+<li>renewalThresholdUpdateIntervalMs = 15 * 60 * 1000</li>
+</ul>
+<p>续约数阀值更新频率。</p>
+<ul>
+<li>peerEurekaNodesUpdateIntervalMs = 10 * 60 * 1000</li>
+</ul>
+<p>Eureka Server节点更新频率。</p>
+<ul>
+<li>enableReplicatedRequestCompression = false</li>
+</ul>
+<p>是否启用复制请求压缩。</p>
+<ul>
+<li>waitTimeInMsWhenSyncEmpty=5 * 60 * 1000</li>
+</ul>
+<p>当从其他节点同步实例信息为空时等待的时间。</p>
+<ul>
+<li>peerNodeConnectTimeoutMs=200</li>
+</ul>
+<p>节点间连接的超时时间。</p>
+<ul>
+<li>peerNodeReadTimeoutMs=200</li>
+</ul>
+<p>节点间读取信息的超时时间。</p>
+<ul>
+<li>peerNodeTotalConnections=1000</li>
+</ul>
+<p>节点间连接总数。</p>
+<ul>
+<li>peerNodeTotalConnectionsPerHost = 500;</li>
+</ul>
+<p>单个节点间连接总数。</p>
+<ul>
+<li>peerNodeConnectionIdleTimeoutSeconds = 30;</li>
+</ul>
+<p>节点间连接空闲超时时间。</p>
+<ul>
+<li>retentionTimeInMSInDeltaQueue = 3 * MINUTES;</li>
+</ul>
+<p>增量队列的缓存时间。</p>
+<ul>
+<li>deltaRetentionTimerIntervalInMs = 30 * 1000;</li>
+</ul>
+<p>清理增量队列中过期的频率。</p>
+<ul>
+<li>evictionIntervalTimerInMs = 60 * 1000;</li>
+</ul>
+<p>剔除任务频率。</p>
+<ul>
+<li>responseCacheAutoExpirationInSeconds = 180;</li>
+</ul>
+<p>注册列表缓存超时时间（当注册列表没有变化时）</p>
+<ul>
+<li>responseCacheUpdateIntervalMs = 30 * 1000;</li>
+</ul>
+<p>注册列表缓存更新频率。</p>
+<ul>
+<li>useReadOnlyResponseCache = true;</li>
+</ul>
+<p>是否开启注册列表的二级缓存。</p>
+<ul>
+<li>disableDelta=false。</li>
+</ul>
+<p>是否为client提供增量信息。</p>
+<ul>
+<li>maxThreadsForStatusReplication = 1;</li>
+</ul>
+<p>状态同步的最大线程数。</p>
+<ul>
+<li>maxElementsInStatusReplicationPool = 10000;</li>
+</ul>
+<p>状态同步队列的最大容量。</p>
+<ul>
+<li>syncWhenTimestampDiffers = true;</li>
+</ul>
+<p>当时间差异时是否同步。</p>
+<ul>
+<li>registrySyncRetries = 0;</li>
+</ul>
+<p>注册信息同步重试次数。</p>
+<ul>
+<li>registrySyncRetryWaitMs = 30 * 1000;</li>
+</ul>
+<p>注册信息同步重试期间的时间间隔。</p>
+<ul>
+<li>maxElementsInPeerReplicationPool = 10000;</li>
+</ul>
+<p>节点间同步事件的最大容量。</p>
+<ul>
+<li>minThreadsForPeerReplication = 5;</li>
+</ul>
+<p>节点间同步的最小线程数。</p>
+<ul>
+<li>maxThreadsForPeerReplication = 20;</li>
+</ul>
+<p>节点间同步的最大线程数。</p>
+<ul>
+<li>maxTimeForReplication = 30000;</li>
+</ul>
+<p>节点间同步的最大时间，单位为毫秒。</p>
+<ul>
+<li>disableDeltaForRemoteRegions = false；</li>
+</ul>
+<p>是否启用远程区域增量。</p>
+<ul>
+<li>remoteRegionConnectTimeoutMs = 1000;</li>
+</ul>
+<p>远程区域连接超时时间。</p>
+<ul>
+<li>remoteRegionReadTimeoutMs = 1000;</li>
+</ul>
+<p>远程区域读取超时时间。</p>
+<ul>
+<li>remoteRegionTotalConnections = 1000;</li>
+</ul>
+<p>远程区域最大连接数</p>
+<ul>
+<li>remoteRegionTotalConnectionsPerHost = 500;</li>
+</ul>
+<p>远程区域单机连接数</p>
+<ul>
+<li>remoteRegionConnectionIdleTimeoutSeconds = 30;</li>
+</ul>
+<p>远程区域连接空闲超时时间。</p>
+<ul>
+<li>remoteRegionRegistryFetchInterval = 30;</li>
+</ul>
+<p>远程区域注册信息拉取频率。</p>
+<ul>
+<li>remoteRegionFetchThreadPoolSize = 20;</li>
+</ul>
+<p>远程区域注册信息线程数。</p>
+<h2 id="Eureka-Server注册中心仪表盘配置"><a href="#Eureka-Server注册中心仪表盘配置" class="headerlink" title="Eureka Server注册中心仪表盘配置"></a><strong>Eureka Server注册中心仪表盘配置</strong></h2><p>注册中心仪表盘的配置主要是控制注册中心的可视化展示。以eureka.dashboard.xxx的格式配置。</p>
+<ul>
+<li>path=”/“</li>
+</ul>
+<p>仪表盘访问路径</p>
+<ul>
+<li>enabled=true</li>
+</ul>
+<p>是否启用仪表盘</p>
+</div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"/></svg></span><div id="reward-comment">我很可爱，请给我钱</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="/images/alipay-qrcode.jpg"><img loading="lazy" src="/images/alipay-qrcode.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"/></svg></span></div></div><div style="display:inline-block"><a href="/images/wechatpay-qrcode.jpg"><img loading="lazy" src="/images/wechatpay-qrcode.jpg" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wechat-pay-line"/></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Kyle Sun</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://kylesun96.github.io/2020/05/19/Java/SpringCloud/Eureka 全部配置/" title="Eureka 全部配置">https://kylesun96.github.io/2020/05/19/Java/SpringCloud/Eureka 全部配置/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"/></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"/></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"/></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"/></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2020/05/19/Java/SpringCloud/Gateway内置过滤器工厂/" rel="prev" title="Gateway内置过滤器工厂"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"/></svg><span class="post-nav-text">Gateway内置过滤器工厂</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/05/17/Java/SpringBoot/SpringBoot默认的配置信息及启动器/" rel="next" title="SpringBoot默认的配置信息及启动器"><span class="post-nav-text">SpringBoot默认的配置信息及启动器</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"/></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>若您无 GitHub 账号，可直接在下方匿名评论。</span><br><span>若您想及时得到回复提醒，建议跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/KyleSun/kylesun96.github.io/issues?q=is:issue+Eureka 全部配置">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"/></svg></span><span class="author"> Kyle Sun</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v3.9.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.6.3</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2019-09-27T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"/></svg><svg class="progress-circle-container" viewbox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"/></svg></a></div><script defer src="/js/hexo-theme-yun.js"></script></body></html>
