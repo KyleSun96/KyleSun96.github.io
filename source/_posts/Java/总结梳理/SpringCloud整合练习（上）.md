@@ -1,5 +1,5 @@
 ---
-title: SpringCloud整合练习
+title: SpringCloud整合练习（上）
 date: 2020-05-22 14:56:50
 tags: 
  - SpringCloud
@@ -12,8 +12,10 @@ description:
 ---
 
 > 在学习过 SpringBoot，Docker，RabbitMQ，SpringCloud，ElasticSearch的零散知识点后，对于各知识点没有统一连贯的把握
-> 
+>
 > 因此做一个小练习，用于巩固SpringBoot和SpringCloud中学习到的知识点，以加深对SpringBoot以及SpringCloud的理解和使用
+>
+> [练习代码点击此处](https://github.com/KyleSun96/springcloud-learning-samples) 其中的part08_springcloud_practice 部分
 >
 > 图床待更新
 
