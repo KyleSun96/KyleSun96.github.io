@@ -15,7 +15,7 @@ description:
 >
 > 因此做一个小练习，用于巩固SpringBoot和SpringCloud中学习到的知识点，以加深对SpringBoot以及SpringCloud的理解和使用
 >
-> [练习代码点击此处](https://github.com/KyleSun96/springcloud-learning-samples) 其中的part08_springcloud_practice 部分
+> 练习代码 [点击此处](https://github.com/KyleSun96/springcloud-learning-samples) 其中的part08_springcloud_practice 部分
 >
 > 图床待更新
 
