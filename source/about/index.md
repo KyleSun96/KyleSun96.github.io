@@ -12,7 +12,7 @@ type: about
 性别：男
 年龄：24
 爱好：代码、音乐
-岗位：Java开发
+岗位：Java后端开发
 坐标：安徽合肥
 家乡：安徽合肥
 邮箱：swy0907163@163.com
@@ -27,7 +27,10 @@ type: about
 5. SpringBoot
 6. SpringCloud
 7. Mysql
-8. 持续部署
+8. Git
+9. Redis
+10. Maven
+11. 持续部署
 
 ### 一点要求
 
